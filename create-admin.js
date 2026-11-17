@@ -5,7 +5,7 @@ db.exec(`CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY,name TEXT NOT N
 const rl=readline.createInterface({input:process.stdin,output:process.stdout});
 const ask=q=>new Promise(r=>rl.question(q,r));
 (async()=>{
- const name=await ask("Admin name: "),phone=(await ask("Admin 10-digit phone: ")).replace(/\D/g,""),pass=await ask("Strong admin password (12+ chars): ");
+ const name="Ashvendra Rajput ",phone= "8840199945".replace(/\D/g,""),pass=" Ashvendra#8840";
  if(phone.length!==10||pass.length<12){console.log("Invalid phone or password too short.");rl.close();process.exit(1)}
  const hash=await bcrypt.hash(pass,12);
  try{db.prepare("INSERT INTO users(name,phone,password_hash,role) VALUES(?,?,?,'admin')").run(name,phone,hash);console.log("Admin account created. Keep the password private.");}
